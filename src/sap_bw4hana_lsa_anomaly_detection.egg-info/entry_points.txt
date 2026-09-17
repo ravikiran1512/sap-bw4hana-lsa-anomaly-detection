@@ -1,0 +1,2 @@
+[console_scripts]
+tn-anomaly = tn_anomaly.cli:main
