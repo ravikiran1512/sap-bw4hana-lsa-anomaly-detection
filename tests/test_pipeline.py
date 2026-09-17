@@ -1,9 +1,10 @@
+from pathlib import Path
 from tn_anomaly.config import load_config
 from tn_anomaly.pipeline import run_experiment
 
 def test_pipeline_smoke(tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
-    cfg=load_config("/mnt/data/sap-bw4hana-lsa-anomaly-detection/config/small.yaml")
+    cfg=load_config(Path(__file__).resolve().parents[1] / "config" / "small.yaml")
     cfg["data"]["sales_orders"]=80
     cfg["experiment"]["detectors"]=["rules","zscore","isolation_forest"]
     cfg["experiment"]["layers"]=["inbound"]

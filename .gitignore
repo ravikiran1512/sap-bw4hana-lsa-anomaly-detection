@@ -5,6 +5,7 @@ __pycache__/
 venv/
 .env
 .DS_Store
+*.egg-info/
 models/*.joblib
 models/*.pkl
 data/raw/*.csv
