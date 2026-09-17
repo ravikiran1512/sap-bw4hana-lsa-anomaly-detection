@@ -1,0 +1,12 @@
+dataset_sizes:
+  small: 1000
+  medium: 10000
+  large: 100000
+anomaly_rates: [0.005, 0.01, 0.02, 0.03, 0.05]
+detectors: [baseline, rules, zscore, iqr, isolation_forest, one_class_svm, autoencoder]
+layers: [inbound, harmonization]
+seeds: [42, 77, 123]
+notes: >
+  Large configurations are intended for capable research environments. The local
+  smoke test uses config/small.yaml. Results are never fabricated; only executed
+  runs are written to experiments/results.

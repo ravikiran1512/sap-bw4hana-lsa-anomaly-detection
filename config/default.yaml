@@ -1,0 +1,57 @@
+project:
+  company: "TechNova Manufacturing GmbH"
+  random_seed: 42
+
+data:
+  start_date: "2025-01-01"
+  end_date: "2025-12-31"
+  customers: 1000
+  materials: 300
+  plants: 5
+  warehouses: 8
+  sales_organizations: 4
+  sales_orders: 5000
+  avg_items_per_order: 3
+  delivery_rate: 0.92
+  billing_rate: 0.95
+  finance_rate: 0.98
+  exchange_rate_frequency: "D"
+
+corruption:
+  anomaly_rate: 0.02
+  rates_supported: [0.005, 0.01, 0.02, 0.03, 0.05]
+  source_layer: "inbound"
+  anomaly_types:
+    - numeric_drift
+    - margin_corruption
+    - exchange_rate_drift
+    - uom_corruption
+    - currency_mismatch
+    - phantom_delta
+    - referential_integrity
+    - temporal_corruption
+    - collective_anomaly
+
+models:
+  threshold_quantile: 0.98
+  isolation_forest:
+    n_estimators: 150
+    max_samples: "auto"
+  one_class_svm:
+    nu: 0.02
+    gamma: "scale"
+  autoencoder:
+    hidden_layer_sizes: [16, 6, 16]
+    max_iter: 250
+    alpha: 0.0001
+
+experiment:
+  layers: ["inbound", "harmonization"]
+  detectors: ["baseline", "rules", "zscore", "iqr", "isolation_forest", "one_class_svm", "autoencoder"]
+  repetitions: 1
+  output_dir: "experiments/results"
+  run_dir: "experiments/runs"
+
+benchmark:
+  capture_cpu: true
+  capture_memory: true

@@ -1,0 +1,21 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.env
+.DS_Store
+models/*.joblib
+models/*.pkl
+data/raw/*.csv
+data/processed/*.csv
+data/ground_truth/*.csv
+experiments/runs/*
+!experiments/runs/.gitkeep
+experiments/results/*.csv
+!experiments/results/.gitkeep
+reports/
+
+# Keep one actually measured smoke benchmark; plots are reproducibly generated
+!experiments/results/smoke_benchmark.csv
+experiments/results/figures/*.png

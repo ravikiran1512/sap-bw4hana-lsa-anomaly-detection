@@ -1,0 +1,8 @@
+services:
+  research:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ../experiments/results:/app/experiments/results
+      - ../data:/app/data

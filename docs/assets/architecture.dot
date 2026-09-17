@@ -1,0 +1,14 @@
+digraph G {
+rankdir=TB; graph [bgcolor="white", pad="0.2", nodesep="0.35", ranksep="0.45"];
+node [shape=box, style="rounded,filled", fillcolor="#f7f7f7", color="#333333", fontname="Helvetica", fontsize=11, margin="0.15,0.10"];
+edge [color="#555555", penwidth=1.2, arrowsize=.7];
+source [label="SOURCE SYSTEMS\nSynthetic SAP-like O2C + Finance"];
+raw [label="Inbound / RAW Layer\nWrite-Interface ADSO-like"];
+quality [label="Data Quality Gate\nRule-Based Validation"];
+harm [label="Harmonization Layer\nStandard ADSO-like Semantic Model"];
+detect [label="Anomaly Detection Engine\nRules | Statistics | Isolation Forest\nOne-Class SVM | Autoencoder"];
+core [label="Core / Propagation Layer"];
+analytic [label="Analytical Layer\nCompositeProvider-like Semantic View"];
+kpi [label="KPI / Reporting"];
+source -> raw -> quality -> harm -> detect -> core -> analytic -> kpi;
+}
